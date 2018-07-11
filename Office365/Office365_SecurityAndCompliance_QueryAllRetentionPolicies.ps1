@@ -13,5 +13,5 @@ foreach($obj in $RetentionPolicies)
 
 clear
 
-Write-host $RetentionPolicies.Count Retention Policies found
+$RetentionPolicy.name
 Write-host $RetentionPolicies.Count Retention Policies found
