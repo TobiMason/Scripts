@@ -2,8 +2,10 @@ $UserCredential = Get-Credential
 $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri https://ps.compliance.protection.outlook.com/powershell-liveid/ -Credential $UserCredential -Authentication Basic -AllowRedirection
 Import-PSSession -Session $Session
 
-$RetentionPolicies = Get-LabelPolicyRule
-foreach($obj in $RetentionPolicies)
+
+
+$RetentionComplianceRule = Get-RetentionComplianceRule
+foreach($obj in $RetentionComplianceRule)
 {
    if($obj.name -like "*ptr-*") 
    {
@@ -13,5 +15,6 @@ foreach($obj in $RetentionPolicies)
 
 clear
 
-$RetentionPolicy.name
-Write-host $RetentionPolicies.Count Retention Policies found
+$RetentionComplianceRule.name
+Write-host $RetentionComplianceRule.Count Retention Policies found
+Write-host 'Use variable "$RetentionComplianceRule" to see more configuration settings'
